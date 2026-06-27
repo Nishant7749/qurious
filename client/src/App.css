@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+.font-syne {
+    font-family: "Syne Mono";
+}
+.font-croissant{
+    font-family: "Croissant One";
+}
+.font-lobster{
+    font-family: "Lobster Two";
+}
+.font-roboto{
+    font-family: "Roboto";
+}
