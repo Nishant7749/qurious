@@ -2,8 +2,8 @@ const Quiz = require('../models/Quiz')
 
 const postQuiz = async(req, res)=> {
     try {
-        const{title, questions, description, category, difficulty, creator} = req.body
-        if(!title || !questions || !description || !category || !difficulty || !creator) {
+        const{title, questions, description, category, difficulty, creator, language} = req.body
+        if(!title || !description || !category || !difficulty || !creator || !language) {
             res.status(404).json({message: "All fields are required! [title, questions, description, category, difficulty, creator]"})
         }
 

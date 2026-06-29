@@ -17,7 +17,7 @@ export default function App() {
         <Route path='/' element={<Home />} />
         <Route path='/create-quiz' element={<LandingPage/>} />
         <Route path='/quiz-details' element={<QuizDetails/>} />
-        <Route path='/create-ques' element={<CreateQues/>} />
+        <Route path='/create-ques/:id' element={<CreateQues/>} />
         <Route path='/preview-quiz' element={<PreviewPage/>} />
       </Routes>
     </>
