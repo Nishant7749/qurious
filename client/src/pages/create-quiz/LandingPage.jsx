@@ -16,7 +16,7 @@ export default function LandingPage() {
 
                 <div className='flex items-center gap-3 justify-center bg-[#6366F1] p-3 rounded-xl text-lg font-roboto mt-10 hover:bg-[#4F46E5] cursor-pointer border border-[#4F46E5] shadow-md shadow-[#6366F1]'>
                     <GoPlusCircle className='text-xl hover:text-2xl transition-all duration-200' />
-                    <button className=''><Link to='/quiz-details'>Create a Quiz</Link></button>
+                    <button className=''><Link to='/create/quiz-details'>Create a Quiz</Link></button>
                     <LuArrowRight className='text-xl' />
                 </div>
             </div>

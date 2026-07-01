@@ -3,48 +3,48 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react'
 import { putQuiz } from "../../services/API";
 
-export default function CreateQues() {
-    const [quiz, setQuiz] = useState([])
-    const [quesData, setQuesData] = useState([{
-        id: 1,
-        question: "",
-        options: ["", "", "", ""],
-        correctAnswer: null
-    }])
+export default function CreateQues({setCurrentStep, questions, setQuestions}) {
+    
+    // const [questions, setQuestions] = useState([{
+    //     id: 1,
+    //     question: "",
+    //     options: ["", "", "", ""],
+    //     correctAnswer: null
+    // }])
     const navigate = useNavigate()
     const { id } = useParams()
 
 
     const handleQuesChange = (quesIndex, value) => {
-        const updatedQues = [...quesData]
+        const updatedQues = [...questions]
 
         updatedQues[quesIndex].question = value
-        setQuesData(updatedQues)
+        setQuestions(updatedQues)
     }
 
     const handleOptionsChange = (quesIndex, optionIndex, value) => {
-        const updatedQues = [...quesData]
+        const updatedQues = [...questions]
 
         updatedQues[quesIndex].options[optionIndex] = value
-        setQuesData(updatedQues)
+        setQuestions(updatedQues)
     }
 
     const handleCorrectChange = (quesIndex, value) => {
-        const updatedQues = [...quesData]
+        const updatedQues = [...questions]
 
         updatedQues[quesIndex].correctAnswer = value
-        setQuesData[updatedQues]
+        setQuestions[updatedQues]
     }
 
 
     const handleDelQues = (quesIndex) => {
-        const updatedQues = quesData.filter((_, index)=> index !== quesIndex)
-        setQuesData(updatedQues)
+        const updatedQues = questions.filter((_, index)=> index !== quesIndex)
+        setQuestions(updatedQues)
     }
 
 
     const handleAddQues = () => {
-        setQuesData((prev) => [...prev, {
+        setQuestions((prev) => [...prev, {
 
             question: "",
             options: ["", "", "", ""],
@@ -52,18 +52,21 @@ export default function CreateQues() {
 
         }
         ])
+        console.log("Added Ques")
     }
 
     const handleContinue = async () => {
         try {
 
 
-            const updatedQuiz = { quesData }
+            const updatedQuiz = { questions }
 
             await putQuiz(id, updatedQuiz)
 
-
-            navigate(`/preview-quiz/${id}`)
+console.log("Added All Ques. Successfully!")
+console.log("updatedQuz: ", updatedQuiz)
+console.log("questions: ", questions)
+            navigate(`/create/preview-quiz/${id}`)
 
 
         } catch (error) {
@@ -75,7 +78,7 @@ export default function CreateQues() {
     return (
         <>
 
-            <CreateQuesCard quesData={quesData} handleQuesChange={handleQuesChange} handleOptionsChange={handleOptionsChange} handleCorrectChange={handleCorrectChange} handleDelQues={handleDelQues} handleAddQues={handleAddQues} handleContinue={handleContinue} />
+            <CreateQuesCard setCurrentStep={setCurrentStep} questions={questions} handleQuesChange={handleQuesChange} handleOptionsChange={handleOptionsChange} handleCorrectChange={handleCorrectChange} handleDelQues={handleDelQues} handleAddQues={handleAddQues} handleContinue={handleContinue} />
 
 
 

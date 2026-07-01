@@ -2,7 +2,7 @@ import { BiCategory } from "react-icons/bi";
 import { BsBarChart } from "react-icons/bs";
 import { GrLanguage } from "react-icons/gr";
 
-export default function QuizDetailsCard({ handleChange, quizData, handleSave }) {
+export default function QuizDetailsCard({ setCurrentStep, handleChange, quizData, handleSave }) {
 
     return (
         <>
@@ -88,7 +88,7 @@ export default function QuizDetailsCard({ handleChange, quizData, handleSave }) 
 
                     </div>
 
-                    <button onClick={handleSave} className="p-3 rounded-xl cursor-pointer bg-[#6366F1] mt-10 shadow-lg shadow-blue-900 hover:bg-[#4F46E5]">Save & Continue</button>
+                    <button onClick={()=> {handleSave(); setCurrentStep(prev => prev+1)}}  className="p-3 rounded-xl cursor-pointer bg-[#6366F1] mt-10 shadow-lg shadow-blue-900 hover:bg-[#4F46E5]">Save & Continue</button>
 
 
                 </div>

@@ -6,6 +6,7 @@ import LandingPage from './pages/create-quiz/LandingPage'
 import QuizDetails from './pages/create-quiz/QuizDetails'
 import CreateQues from './pages/create-quiz/CreateQues'
 import PreviewPage from './pages/create-quiz/PreviewPage'
+import CreateQuizLayout from './pages/create-quiz/CreateQuizLayout'
 
 export default function App() {
 
@@ -15,10 +16,15 @@ export default function App() {
 
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/create-quiz' element={<LandingPage/>} />
-        <Route path='/quiz-details' element={<QuizDetails/>} />
-        <Route path='/create-ques/:id' element={<CreateQues/>} />
-        <Route path='/preview-quiz' element={<PreviewPage/>} />
+        <Route path='/landing' element={<LandingPage/>} />
+
+        <Route path='/create' element={<CreateQuizLayout/>} >
+            <Route path='/create/quiz-details/:id' element={<QuizDetails/>} />
+            <Route path='/create/create-ques/:id' element={<CreateQues/>} />
+            <Route path='/create/preview-quiz/:id' element={<PreviewPage/>} />
+            </Route>
+        
+
       </Routes>
     </>
   )

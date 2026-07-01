@@ -2,8 +2,8 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-export default function CreateQuesCard({ quesData, handleQuesChange, handleOptionsChange, handleCorrectChange, handleDelQues, handleAddQues, handleContinue }) {
-console.log(quesData)
+export default function CreateQuesCard({setCurrentStep, questions, handleQuesChange, handleOptionsChange, handleCorrectChange, handleDelQues, handleAddQues, handleContinue }) {
+console.log(questions)
     return (
         <>
 
@@ -15,7 +15,7 @@ console.log(quesData)
                     </div>
 
 
-                    {quesData.map((q, index) => (
+                    {questions.map((q, index) => (
                         <div key={index}>
 
 
@@ -64,9 +64,9 @@ console.log(quesData)
                     <div className="w-full bg-gray-800 h-0.5"></div>
                     <div className="flex justify-between items-center">
 
-                        <button className="bg-gray-800 hover:bg-gray-700 cursor-pointer p-2 px-8 rounded-md"><Link to="/quiz-details">Back</Link></button>
+                        <button className="bg-gray-800 hover:bg-gray-700 cursor-pointer p-2 px-8 rounded-md"><Link to="/create/quiz-details">Back</Link></button>
 
-                        <button onClick={handleContinue} className="p-3 rounded-xl cursor-pointer bg-[#6366F1] shadow-lg shadow-blue-900 hover:bg-[#4F46E5]">Save & Continue</button>
+                        <button onClick={()=> {handleContinue(); setCurrentStep(prev => prev+1)}} className="p-3 rounded-xl cursor-pointer bg-[#6366F1] shadow-lg shadow-blue-900 hover:bg-[#4F46E5]">Save & Continue</button>
                     </div>
 
                 </div>

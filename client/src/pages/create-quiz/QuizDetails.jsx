@@ -4,15 +4,15 @@ import { useState } from 'react'
 import { postQuiz } from "../../services/API";
 
 
-export default function QuizDetails() {
-    const [quizData, setQuizData] = useState({
-        title: "",
-        description: "",
-        creator: "",
-        category: "",
-        difficulty: "",
-        language: ""
-    })
+export default function QuizDetails({setCurrentStep, quizData, setQuizData}) {
+    // const [quizData, setQuizData] = useState({
+    //     title: "",
+    //     description: "",
+    //     creator: "",
+    //     category: "",
+    //     difficulty: "",
+    //     language: ""
+    // })
     const navigate = useNavigate()
 
     const handleChange = async (e) => {
@@ -23,14 +23,12 @@ export default function QuizDetails() {
 
     }
 
-    const handleSave = async() => {
+    const handleSave = async () => {
         try {
-         
-            const res = await postQuiz(quizData)
-            console.log(quizData)
-            console.log(res)
 
-            navigate(`/create-ques/${res.data._id}`)
+            const res = await postQuiz(quizData)
+
+            navigate(`/create/create-ques/${res.data._id}`)
 
             console.log("Quiz Details Saved")
         } catch (error) {
@@ -42,7 +40,10 @@ export default function QuizDetails() {
 
     return (
         <>
-            <QuizDetailsCard handleChange={handleChange} quizData={quizData} handleSave={handleSave} />
+            <div className=''>
+
+                <QuizDetailsCard setCurrentStep={setCurrentStep} handleChange={handleChange} quizData={quizData} handleSave={handleSave} />
+            </div>
         </>
     )
 }

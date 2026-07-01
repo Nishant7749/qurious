@@ -16,7 +16,7 @@ export default function Navbar() {
 
                 <div className='flex text-blue-400 gap-6'>
                     <Link className='cursor-pointer hover:text-blue-500' to="/">Home</Link>
-                    <Link className='cursor-pointer hover:text-blue-500' to="/create-quiz">Create</Link>
+                    <Link className='cursor-pointer hover:text-blue-500' to="/landing">Create</Link>
                     <Link className='cursor-pointer hover:text-blue-500'  to="/">Take</Link>
                     <Link className='cursor-pointer hover:text-blue-500'  to="/">List</Link>
                     <Link className='cursor-pointer hover:text-blue-500'  to="/">Login</Link>
