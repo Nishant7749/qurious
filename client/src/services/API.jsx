@@ -2,6 +2,16 @@ import axios from 'axios'
 
 const api = 'http://localhost:5000/quiz'
 
+export const getQuiz = async(id)=> {
+     try {
+        const res = await axios.get(`${api}/${id}`)
+        return res.data
+        console.log("API Connected Successfully.")
+    } catch (error) {
+        console.error("API Error: ", error.message)
+    }
+}
+
 export const getQuizes = async () => {
     try {
         const res = await axios.get(api)

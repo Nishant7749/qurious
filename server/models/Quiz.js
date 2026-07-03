@@ -36,6 +36,11 @@ const quizSchema = new mongoose.Schema({
 
     creator: String,
 
+    status: {
+        type: String,
+        enum: ["draft", "published"],
+        default: "draft"
+    }
 
 
 }, {timestamps: true})

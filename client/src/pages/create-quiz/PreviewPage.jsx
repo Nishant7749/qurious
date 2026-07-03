@@ -1,9 +1,17 @@
 import { FaRegEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from 'react'
-import { postQuiz, putQuiz } from "../../services/API";
+import { putQuiz } from "../../services/API";
 
 export default function PreviewPage({ quizData, questions }) {
+    const navigate = useNavigate()
+    const {id} = useParams()
+
+    const handlePublish = async()=> {
+        await putQuiz({id, status: "published"})
+        alert("Quiz Created Successfully.")
+        navigate("/")
+    }
 
     return (
         <>
@@ -16,7 +24,7 @@ export default function PreviewPage({ quizData, questions }) {
                     <div className="border flex flex-col my-5 gap-3 font-roboto border-gray-800 p-4 rounded-xl w-full">
                         <div className="flex items-center justify-between">
                             <h1 className="text-xl font-bold mb-6">Quiz Details</h1>
-                            <Link to="/create/quiz-details/:id">
+                            <Link to={`/create/quiz-details/${id}`}>
                                 <FaRegEdit className="text-xl text-blue-500 cursor-pointer hover:text-blue-600" />
                             </Link>
                         </div>
@@ -34,7 +42,7 @@ export default function PreviewPage({ quizData, questions }) {
                     <div className="border flex flex-col gap-3 font-roboto border-gray-800 p-4 rounded-xl w-full">
                         <div className="flex items-center justify-between">
                             <h1 className="text-xl font-bold mb-6">Check your Questions</h1>
-                            <Link to="/create/create-ques/:id">
+                            <Link to={`/create/create-ques/${id}`}>
                                 <FaRegEdit className="text-xl text-blue-500 cursor-pointer hover:text-blue-600" />
                             </Link>
                         </div>
@@ -58,15 +66,15 @@ export default function PreviewPage({ quizData, questions }) {
                                     </div>
                                 </>
                             ))}
-                            
+
                         </div>
 
 
                     </div>
 
-                    <div className="bg-blue-700 m-2 w-full p-3 rounded-xl font-roboto flex items-center justify-center shadow-lg hover:shadow-xl cursor-pointer border border-blue-500 shadow-blue-900">
+                    <button onClick={handlePublish} className="bg-blue-700 m-2 w-full p-3 rounded-xl font-roboto flex items-center justify-center shadow-lg hover:shadow-xl cursor-pointer border border-blue-500 shadow-blue-900">
                         Publish Quiz
-                    </div>
+                    </button>
                 </div>
             </div>
         </>

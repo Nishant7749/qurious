@@ -32,7 +32,8 @@ export default function QuizDetailsCard({ setCurrentStep, handleChange, quizData
                                 <BiCategory className="text-blue-600 text-xl" />
                                 <label>Category</label>
                             </div>
-                            <select name="category" value={quizData.category} onChange={handleChange} className="bg-gray-800/50 p-2 rounded-xl text-gray-400 outline-none border border-gray-800 focus:border-blue-700">
+                            <select name="category" value={quizData.category} onChange={handleChange} className="bg-gray-800/50 cursor-pointer p-2 rounded-xl text-gray-400 outline-none border border-gray-800 focus:border-blue-700">
+                            <div className="text-gray-200">
                                 <option value="">Select Category</option>
                                 <option value="Science">Science</option>
                                 <option value="Mathematics">Mathematics</option>
@@ -49,6 +50,7 @@ export default function QuizDetailsCard({ setCurrentStep, handleChange, quizData
                                 <option value="Environment">Environment</option>
                                 <option value="Ethical">Ethical</option>
                                 <option value="Philosophy">Philosophy</option>
+                                </div>
 
                             </select>
                         </div >
@@ -58,11 +60,13 @@ export default function QuizDetailsCard({ setCurrentStep, handleChange, quizData
                                 <BsBarChart className="text-blue-600 text-xl" />
                                 <label>Difficulty</label>
                             </div>
-                            <select name="difficulty" value={quizData.difficulty} onChange={handleChange} className="bg-gray-800/50 p-2 text-gray-400 rounded-xl outline-none border border-gray-800 focus:border-blue-700">
+                            <select name="difficulty" value={quizData.difficulty} onChange={handleChange} className="bg-gray-800/50 cursor-pointer p-2 text-gray-400 rounded-xl outline-none border border-gray-800 focus:border-blue-700">
+                            <div className="text-gray-200">
                                 <option value="">Select Difficulty</option>
                                 <option value="Easy">Easy</option>
                                 <option value="Medium">Medium</option>
                                 <option value="Hard">Hard</option>
+                                </div>
                             </select>
                         </div>
 
@@ -71,7 +75,8 @@ export default function QuizDetailsCard({ setCurrentStep, handleChange, quizData
                                 <GrLanguage className="text-blue-600 text-xl" />
                                 <label>Language</label>
                             </div>
-                            <select name="language" value={quizData.language} onChange={handleChange} className="bg-gray-800/50 text-gray-400 p-2 rounded-xl outline-none border border-gray-800 focus:border-blue-700">
+                            <select name="language" value={quizData.language} onChange={handleChange} className="bg-gray-800/50 cursor-pointer text-gray-400 p-2 rounded-xl outline-none border border-gray-800 focus:border-blue-700">
+                            <div className="text-gray-200">
                                 <option value="">Select Language</option>
                                 <option value="English">English</option>
                                 <option value="Spanish">Spanish</option>
@@ -83,6 +88,7 @@ export default function QuizDetailsCard({ setCurrentStep, handleChange, quizData
                                 <option value="Urdu">Urdu</option>
                                 <option value="Arabic">Arabic</option>
                                 <option value="Chinese">Chinese</option>
+                                </div>
                             </select>
                         </div>
 

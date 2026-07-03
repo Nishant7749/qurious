@@ -1,18 +1,11 @@
 import QuizDetailsCard from '../../components/QuizDetailsCard'
-import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
-import { postQuiz } from "../../services/API";
+import { useNavigate, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { getQuiz, postQuiz } from "../../services/API";
 
 
 export default function QuizDetails({setCurrentStep, quizData, setQuizData}) {
-    // const [quizData, setQuizData] = useState({
-    //     title: "",
-    //     description: "",
-    //     creator: "",
-    //     category: "",
-    //     difficulty: "",
-    //     language: ""
-    // })
+   
     const navigate = useNavigate()
 
     const handleChange = async (e) => {
@@ -26,9 +19,10 @@ export default function QuizDetails({setCurrentStep, quizData, setQuizData}) {
     const handleSave = async () => {
         try {
 
-            const res = await postQuiz(quizData)
+            const res = await postQuiz({...quizData, status: "draft"})
 
             navigate(`/create/create-ques/${res.data._id}`)
+            console.log("quiz data details : ", res.data)
 
             console.log("Quiz Details Saved")
         } catch (error) {

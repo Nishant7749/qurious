@@ -2,9 +2,9 @@ const Quiz = require('../models/Quiz')
 
 const postQuiz = async(req, res)=> {
     try {
-        const{title, questions, description, category, difficulty, creator, language} = req.body
+        const{title, questions, description, category, difficulty, creator, language, status} = req.body
         if(!title || !description || !category || !difficulty || !creator || !language) {
-            res.status(404).json({message: "All fields are required! [title, questions, description, category, difficulty, creator]"})
+            return res.status(404).json({message: "All fields are required! [title, questions, description, category, difficulty, creator]"})
         }
 
         const newQuiz = await Quiz.create(req.body)
@@ -13,6 +13,17 @@ const postQuiz = async(req, res)=> {
 
     } catch (error) {
         res.status(500).json({message: "Server-Side Error!", error: error.message})
+    }
+}
+
+const getQuiz = async(req, res)=> {
+    try {
+        const quiz = await Quiz.findById(req.params.id)
+
+        res.status(201).json({message: "Fetched The Quiz Successfully!", data: quiz})
+
+    } catch (error) {
+         res.status(500).json({message: "Server-Side Error!", error: error.message})
     }
 }
 
@@ -58,4 +69,4 @@ const deleteQuiz = async(req, res)=> {
 
 
 
-module.exports = {postQuiz, getQuizes, putQuiz, deleteQuiz}
+module.exports = {postQuiz, getQuiz, getQuizes, putQuiz, deleteQuiz}

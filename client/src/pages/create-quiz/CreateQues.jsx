@@ -3,14 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react'
 import { putQuiz } from "../../services/API";
 
-export default function CreateQues({setCurrentStep, questions, setQuestions}) {
-    
-    // const [questions, setQuestions] = useState([{
-    //     id: 1,
-    //     question: "",
-    //     options: ["", "", "", ""],
-    //     correctAnswer: null
-    // }])
+export default function CreateQues({ setCurrentStep, questions, setQuestions }) {
+
     const navigate = useNavigate()
     const { id } = useParams()
 
@@ -38,7 +32,7 @@ export default function CreateQues({setCurrentStep, questions, setQuestions}) {
 
 
     const handleDelQues = (quesIndex) => {
-        const updatedQues = questions.filter((_, index)=> index !== quesIndex)
+        const updatedQues = questions.filter((_, index) => index !== quesIndex)
         setQuestions(updatedQues)
     }
 
@@ -63,9 +57,9 @@ export default function CreateQues({setCurrentStep, questions, setQuestions}) {
 
             await putQuiz(id, updatedQuiz)
 
-console.log("Added All Ques. Successfully!")
-console.log("updatedQuz: ", updatedQuiz)
-console.log("questions: ", questions)
+            console.log("Added All Ques. Successfully!")
+            console.log("updatedQuz: ", updatedQuiz)
+            console.log("questions: ", questions)
             navigate(`/create/preview-quiz/${id}`)
 
 

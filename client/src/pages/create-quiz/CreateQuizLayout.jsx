@@ -2,7 +2,9 @@ import SidebarCreate from '../../components/SidebarCreate'
 import QuizDetails from './QuizDetails'
 import CreateQues from './CreateQues'
 import PreviewPage from './PreviewPage'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { getQuiz } from '../../services/API'
 
 
 export default function CreateQuizLayout() {
@@ -14,6 +16,7 @@ export default function CreateQuizLayout() {
         category: "",
         difficulty: "",
         language: "",
+        status: ""
         }
     ])
     const [questions, setQuestions] = useState([{
@@ -23,6 +26,23 @@ export default function CreateQuizLayout() {
         correctAnswer: null
     }])
     const[currentStep, setCurrentStep] = useState(1)
+
+     const {id} = useParams()
+
+    useEffect(()=> {
+        if(!id) return 
+
+        const fetchDetails = async()=> {
+            const data = await getQuiz(id)
+            setQuizData(data.data)
+            setQuestions(data.data.questions)
+
+            console.log("data in quiz details: ", data.data)
+            console.log("data in questions: ", data.data.questions)
+        }
+        fetchDetails()
+    }, [id])
+    
 
 
 
