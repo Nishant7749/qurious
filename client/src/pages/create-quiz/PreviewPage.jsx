@@ -13,6 +13,9 @@ export default function PreviewPage({ quizData, questions }) {
         navigate("/")
     }
 
+    console.log("correct ans", questions.correctAnswer)
+
+
     return (
         <>
             <div className="">
@@ -63,6 +66,8 @@ export default function PreviewPage({ quizData, questions }) {
                                                 </div>
                                             ))}
                                         </div>
+
+                                        <div className="p-2 text-center bg-green-500 rounded-xl m-2">Correct Option : <span className="font-bold text-lg">{ques.correctAnswer}</span></div>
                                     </div>
                                 </>
                             ))}

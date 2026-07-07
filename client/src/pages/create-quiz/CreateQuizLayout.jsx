@@ -3,7 +3,7 @@ import QuizDetails from './QuizDetails'
 import CreateQues from './CreateQues'
 import PreviewPage from './PreviewPage'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { getQuiz } from '../../services/API'
 
 
@@ -23,22 +23,49 @@ export default function CreateQuizLayout() {
         id: 1,
         question: "",
         options: ["", "", "", ""],
-        correctAnswer: null
+        correctAnswer: ""
     }])
     const[currentStep, setCurrentStep] = useState(1)
 
      const {id} = useParams()
+
+     const location = useLocation()
+
+     useEffect(()=> {
+        if(location.pathname.includes('quiz-details')) {
+            setCurrentStep(1)
+        }
+        else if(location.pathname.includes('create-ques')) {
+            setCurrentStep(2)
+        }
+        else if(location.pathname.includes('preview-quiz')) {
+            setCurrentStep(3)
+        }
+        
+     }, [location.pathname])
 
     useEffect(()=> {
         if(!id) return 
 
         const fetchDetails = async()=> {
             const data = await getQuiz(id)
-            setQuizData(data.data)
-            setQuestions(data.data.questions)
+            const res = data.data
+            setQuizData(res)
+            
+            if(res.questions.length === 0) {
+                setQuestions([{
+        id: 1,
+        question: "",
+        options: ["", "", "", ""],
+        correctAnswer: ""
+    }])
+            }
+            else{
+                setQuestions(res.questions)
+            }
 
-            console.log("data in quiz details: ", data.data)
-            console.log("data in questions: ", data.data.questions)
+            console.log("data in quiz details: ", res)
+            console.log("data in questions: ", res.questions)
         }
         fetchDetails()
     }, [id])

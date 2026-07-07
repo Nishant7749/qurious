@@ -19,7 +19,7 @@ export default function SidebarCreate({ currentStep }) {
 
                 <div className="mt-18 p-4 flex flex-col gap-">
                     {steps.map((step) => (
-                        <div className="flex gap-3">
+                        <div key={step.id} className="flex gap-3">
                             <div className="flex flex-col items-center justify-center">
                                 <div className={`flex font-bold items-center justify-center border border-blue-600 rounded-full p-2 w-10 ${step.id === currentStep ? "bg-blue-600 shadow-xl shadow-blue-800": ""}`}>{step.id}</div>
 

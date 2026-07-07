@@ -27,7 +27,7 @@ export default function CreateQues({ setCurrentStep, questions, setQuestions }) 
         const updatedQues = [...questions]
 
         updatedQues[quesIndex].correctAnswer = value
-        setQuestions[updatedQues]
+        setQuestions(updatedQues)
     }
 
 
@@ -42,7 +42,7 @@ export default function CreateQues({ setCurrentStep, questions, setQuestions }) 
 
             question: "",
             options: ["", "", "", ""],
-            correctAnswer: null
+            correctAnswer: ""
 
         }
         ])

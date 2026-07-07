@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 export default function CreateQuesCard({setCurrentStep, questions, handleQuesChange, handleOptionsChange, handleCorrectChange, handleDelQues, handleAddQues, handleContinue }) {
-console.log(questions)
+console.log(questions);
     return (
         <>
 
@@ -47,7 +47,7 @@ console.log(questions)
 
                                 <div className="flex items-center justify-center gap-3">
                                     <label className="">Correct Option</label>
-                                    <input className="bg-green-500 w-70 p-2 rounded-md" value={q.correctAnswer} onChange={(e)=> handleCorrectChange(index, e.target.value)} type="number" placeholder="Enter correct option number" />
+                                    <input className="bg-green-500 w-70 p-2 rounded-md" min={1} max={4} value={q.correctAnswer} onChange={(e)=> handleCorrectChange(index, e.target.value)} type="number" placeholder="Enter correct option number" />
                                 </div>
 
                                 <div className="flex items-center border-2 border-gray-700 justify-center mx-40 gap-2 bg-gray-800 hover:bg-gray-700 cursor-pointer p-2">

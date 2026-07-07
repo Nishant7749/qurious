@@ -8,6 +8,8 @@ import CreateQues from './pages/create-quiz/CreateQues'
 import PreviewPage from './pages/create-quiz/PreviewPage'
 import CreateQuizLayout from './pages/create-quiz/CreateQuizLayout'
 import MyQuiz from './pages/MyQuiz'
+import StartQuiz from './pages/StartQuiz'
+import Result from './pages/Result'
 
 export default function App() {
 
@@ -27,7 +29,9 @@ export default function App() {
 
         <Route path='/my-quiz' element={<MyQuiz/>} />
 
+        <Route path="/start-quiz/:id" element={<StartQuiz/>} />
 
+        {/* <Route path="/result/:id" element={<Result/>} /> */}
 
 
       </Routes>

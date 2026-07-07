@@ -13,7 +13,7 @@ export default function MyQuizInfo({ quiz, setQuizzes }) {
      }
 
     const handleEdit = (id) => {
-        navigate(`/create/quiz-details/${id}`)
+        navigate(`/create/preview-quiz/${id}`)
      }
 
     const handleDel = async(id) => {
