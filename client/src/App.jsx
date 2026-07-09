@@ -9,7 +9,8 @@ import PreviewPage from './pages/create-quiz/PreviewPage'
 import CreateQuizLayout from './pages/create-quiz/CreateQuizLayout'
 import MyQuiz from './pages/MyQuiz'
 import StartQuiz from './pages/StartQuiz'
-import Result from './pages/Result'
+import Explore from './pages/Explore'
+import AuthLayout from './pages/authentication/AuthLayout'
 
 export default function App() {
 
@@ -31,7 +32,9 @@ export default function App() {
 
         <Route path="/start-quiz/:id" element={<StartQuiz/>} />
 
-        {/* <Route path="/result/:id" element={<Result/>} /> */}
+        <Route path="/explore" element={<Explore/>} />
+
+        <Route path="/auth" element={<AuthLayout/>} />
 
 
       </Routes>

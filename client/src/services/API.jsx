@@ -51,3 +51,27 @@ export const delQuiz = async (id) => {
         console.error("API Error: ", error.message)
     }
 }
+
+
+
+//authentication
+
+export const RegisterUser = async(data)=> {
+    try {
+        const res = await axios.post(`${api}/auth/register`, data)
+        return res.data
+        console.log("Registered.")
+    } catch (error) {
+        console.log("Register Error : ", error.message)
+    }
+}
+
+export const LoginUser = async(data)=> {
+    try {
+        const res = await axios.post(`${api}/auth/login`, data)
+        return res.data
+        console.log("Logged In.")
+    } catch (error) {
+        console.log("Login Error : ", error.message)
+    }
+}

@@ -18,8 +18,8 @@ export default function Navbar() {
                     <Link className='cursor-pointer hover:text-blue-500' to="/">Home</Link>
                     <Link className='cursor-pointer hover:text-blue-500' to="/landing">Create</Link>
                     <Link className='cursor-pointer hover:text-blue-500'  to="/my-quiz">My Quiz</Link>
-                    <Link className='cursor-pointer hover:text-blue-500'  to="/quizes">Explore</Link>
-                    <Link className='cursor-pointer hover:text-blue-500'  to="/login">Login</Link>
+                    <Link className='cursor-pointer hover:text-blue-500'  to="/explore">Explore</Link>
+                    <Link className='cursor-pointer hover:text-blue-500'  to="/auth">Login</Link>
                 </div>
 
             </nav>
