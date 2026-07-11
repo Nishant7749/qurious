@@ -11,6 +11,7 @@ import MyQuiz from './pages/MyQuiz'
 import StartQuiz from './pages/StartQuiz'
 import Explore from './pages/Explore'
 import AuthLayout from './pages/authentication/AuthLayout'
+import ProtectedRoute from './utils/ProtectedRoute'
 
 export default function App() {
 
@@ -22,19 +23,27 @@ export default function App() {
         <Route path='/' element={<Home />} />
         <Route path='/landing' element={<LandingPage />} />
 
-        <Route path='/create' element={<CreateQuizLayout />} >
+        <Route path='/create' element={
+          <ProtectedRoute>
+            <CreateQuizLayout />
+          </ProtectedRoute>
+        }
+        >
           <Route path='/create/quiz-details/:id?' element={<QuizDetails />} />
           <Route path='/create/create-ques/:id' element={<CreateQues />} />
           <Route path='/create/preview-quiz/:id' element={<PreviewPage />} />
         </Route>
 
-        <Route path='/my-quiz' element={<MyQuiz/>} />
+        <Route path='/my-quiz' element={
+          <ProtectedRoute>
+          <MyQuiz />
+        </ProtectedRoute>} />
 
-        <Route path="/start-quiz/:id" element={<StartQuiz/>} />
+        <Route path="/start-quiz/:id" element={<StartQuiz />} />
 
-        <Route path="/explore" element={<Explore/>} />
+        <Route path="/explore" element={<Explore />} />
 
-        <Route path="/auth" element={<AuthLayout/>} />
+        <Route path="/auth" element={<AuthLayout />} />
 
 
       </Routes>

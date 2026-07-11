@@ -3,17 +3,21 @@ import { IoMdPerson } from "react-icons/io";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { AiOutlineEye } from "react-icons/ai";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register({setTabActive}) {
     const[email, setEmail] = useState("")
     const[password, setPassword] = useState("")
     const[showPass, setShowPass] = useState(false)
+    const navigate = useNavigate()
 
     const handleRegister = async(e)=> {
         try {
             e.preventDefault()
             await RegisterUser({email, password})
-            alert("Registered.")
+            navigate('/')
+           
+            console.log("Registered.")
 
         } catch (error) {
             console.log("Register Error")

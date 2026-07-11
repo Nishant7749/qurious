@@ -8,6 +8,7 @@ import { getQuiz } from '../../services/API'
 
 
 export default function CreateQuizLayout() {
+
     const[quizData, setQuizData] = useState([
         {
         title: "",

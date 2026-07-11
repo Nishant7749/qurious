@@ -3,17 +3,30 @@ import { IoMdPerson } from "react-icons/io";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { AiOutlineEye } from "react-icons/ai";
 import { useState } from 'react';
+import { useAuth } from '../../utils/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login({setTabActive}) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [showPass, setShowPass] = useState(false)
+    const {login} = useAuth()
+    const navigate = useNavigate()
 
     const handleLogin = async (e) => {
         try {
             e.preventDefault()
-            await LoginUser({ email, password })
-            alert("Logged In.")
+            const res = await LoginUser({ email, password })
+           
+             
+             login(
+                res.token, res.email
+             )
+
+             navigate('/')
+
+
+            console.log("Logged In.")
 
         } catch (error) {
             console.log("Login Error")

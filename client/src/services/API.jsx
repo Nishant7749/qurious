@@ -1,10 +1,28 @@
 import axios from 'axios'
 
-const api = 'http://localhost:5000/quiz'
+const api = axios.create({
+    baseURL: 'http://localhost:5000'
+})
 
+//attach jwt to every request
+api.interceptors.request.use((config)=> {
+    const token = localStorage.getItem("token")
+
+    if(token) {
+        config.headers.Authorization = `Bearer ${token}`
+    }
+    return config
+
+    if(!token) {
+        return "No Token"
+    }
+})
+
+
+//crud
 export const getQuiz = async(id)=> {
      try {
-        const res = await axios.get(`${api}/${id}`)
+        const res = await api.get(`/quiz/${id}`)
         return res.data
         console.log("API Connected Successfully.")
     } catch (error) {
@@ -14,7 +32,7 @@ export const getQuiz = async(id)=> {
 
 export const getQuizes = async () => {
     try {
-        const res = await axios.get(api)
+        const res = await api.get(`/quiz`)
         return res.data
         console.log("API Connected Successfully.")
     } catch (error) {
@@ -24,7 +42,7 @@ export const getQuizes = async () => {
 
 export const postQuiz = async (data) => {
     try {
-        const res = await axios.post(api, data)
+        const res = await api.post(`/quiz`, data)
         console.log("API Connected Successfully.")
         return res.data
     } catch (error) {
@@ -34,7 +52,7 @@ export const postQuiz = async (data) => {
 
 export const putQuiz = async (id, data) => {
     try {
-        const res = await axios.put(`${api}/${id}`, data)
+        const res = await api.put(`/quiz/${id}`, data)
         return res.data
         console.log("API Connected Successfully.")
     } catch (error) {
@@ -44,7 +62,7 @@ export const putQuiz = async (id, data) => {
 
 export const delQuiz = async (id) => {
     try {
-        const res = await axios.delete(`${api}/${id}`)
+        const res = await api.delete(`/quiz/${id}`)
         return res.data
         console.log("API Connected Successfully.")
     } catch (error) {
@@ -58,7 +76,7 @@ export const delQuiz = async (id) => {
 
 export const RegisterUser = async(data)=> {
     try {
-        const res = await axios.post(`${api}/auth/register`, data)
+        const res = await api.post(`/auth/register`, data)
         return res.data
         console.log("Registered.")
     } catch (error) {
@@ -68,7 +86,7 @@ export const RegisterUser = async(data)=> {
 
 export const LoginUser = async(data)=> {
     try {
-        const res = await axios.post(`${api}/auth/login`, data)
+        const res = await api.post(`/auth/login`, data)
         return res.data
         console.log("Logged In.")
     } catch (error) {
