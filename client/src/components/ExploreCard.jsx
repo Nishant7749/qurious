@@ -11,6 +11,18 @@ export default function ExploreCard({quizes}) {
         navigate(`/start-quiz/${id}`)
     }
 
+    const shareQuiz = async(id)=> {
+        const link = `${window.location.origin}/quiz/${id}`
+
+        try {
+            await navigator.clipboard.writeText(link)
+            alert('Quiz Link Copied!')
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
     return (
         <>
         <div className="flex gap-10">
@@ -40,9 +52,9 @@ export default function ExploreCard({quizes}) {
                 <div className="flex items-center gap-6">
                     <button onClick={()=> handlePlay(quiz._id)} className="bg-blue-600 p-2 cursor-pointer flex items-center justify-center gap-2  rounded-md w-20 text-xs hover:bg-blue-500/80 hover:shadow-sm border border-blue-500 hover:shadow-blue-500">Play<FaPlay/></button>
 
-                    <div className="text-xl text-gray-300 hover:text-white cursor-pointer"><MdFavoriteBorder/></div>
+                    {/* <div className="text-xl text-gray-300 hover:text-white cursor-pointer"><MdFavoriteBorder/></div> */}
 
-                    <div className="text-xl text-gray-300 hover:text-white cursor-pointer"><GoShareAndroid/></div>
+                    <button onClick={()=> shareQuiz(quiz._id)} className="text-xl text-gray-300 hover:text-white cursor-pointer"><GoShareAndroid/></button>
                 </div>
                 
             </div>
